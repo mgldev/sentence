@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10084d02-40ee-40d6-bcc2-9bcbf8ab6758" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Sentence/Ballsups/FirstSecondLetterSwitch.php" afterPath="$PROJECT_DIR$/src/Sentence/Ballsup/FirstSecondLetterSwitch.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sentence/Corrector.php" afterPath="$PROJECT_DIR$/src/Sentence/Corrector.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sentence/Keyboard.php" afterPath="$PROJECT_DIR$/src/Sentence/Keyboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sentence/Scrambler.php" afterPath="$PROJECT_DIR$/src/Sentence/Scrambler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example.php" afterPath="$PROJECT_DIR$/example.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sentence/Ballsup/RepeatFirstOrLastLetter.php" afterPath="$PROJECT_DIR$/src/Sentence/Ballsup/RepeatFirstOrLastLetter.php" />
     </list>
     <ignored path="sentence.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RepeatFirstOrLastLetter.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RepeatFirstOrLastLetter.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Sentence/Ballsup/RepeatFirstOrLastLetter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="838" selection-end="838" vertical-scroll-proportion="-19.583334" vertical-offset="190" max-vertical-offset="855">
+            <state line="27" column="0" selection-start="509" selection-end="509" vertical-scroll-proportion="0.60902256" vertical-offset="0" max-vertical-offset="665">
               <folding />
             </state>
           </provider>
@@ -87,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="example.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="example.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.2932331" vertical-offset="0" max-vertical-offset="665">
+            <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="510">
               <folding>
                 <element signature="e#55#78#0" expanded="true" />
               </folding>
@@ -135,6 +131,7 @@
         <option value="$PROJECT_DIR$/example.php" />
         <option value="$PROJECT_DIR$/src/Sentence/Keyboard.php" />
         <option value="$PROJECT_DIR$/src/Sentence/Corrector.php" />
+        <option value="$PROJECT_DIR$/src/Sentence/Ballsup/RepeatFirstOrLastLetter.php" />
       </list>
     </option>
   </component>
@@ -298,13 +295,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sentence/Ballsup/RepeatFirstOrLastLetter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="838" selection-end="838" vertical-scroll-proportion="-19.583334" vertical-offset="190" max-vertical-offset="855">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sentence/Scrambler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
@@ -346,10 +336,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.2932331" vertical-offset="0" max-vertical-offset="665">
+        <state line="13" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="510">
           <folding>
             <element signature="e#55#78#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sentence/Ballsup/RepeatFirstOrLastLetter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="509" selection-end="509" vertical-scroll-proportion="0.60902256" vertical-offset="0" max-vertical-offset="665">
+          <folding />
         </state>
       </provider>
     </entry>
