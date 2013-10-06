@@ -4,7 +4,7 @@ namespace Sentence;
 
 class Keyboard {
 
-	protected $chars = "qwertyuiopasdfghjkl;zxcvbnm";
+	protected $chars = "qwertyuiopasdfghjklzxcvbnm";
 
 	public function getNeighbouringKeys($key) {
 
