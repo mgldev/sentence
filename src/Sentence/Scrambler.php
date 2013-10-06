@@ -3,102 +3,107 @@
 namespace Sentence;
 
 use Sentence\Keyboard;
+use Sentence\Ballsups;
 
-class Scrambler {
+class Scrambler
+{
 
-	protected $keyboard = null;
+    protected $ballsups = [];
 
-	public function __construct(Keyboard $keyboard) {
+    protected $scrambled = false;
 
-		$this->setKeyboard($keyboard);
-	}
+    protected $passes = 2;
 
-	public function setKeyboard(Keyboard $keyboard) {
+    protected $probability = 10;
 
-		$this->keyboard = $keyboard;
-		return $this;
-	}
+    public function __construct($options = array())
+    {
+        $this->setOptions($options);
+    }
 
-	public function getKeyboard() {
+    public function setOptions(array $options) {
 
-		return $this->keyboard;
-	}
+        foreach ($options as $key => $value) {
 
-	public function scramble($sentence) {
+            switch ($key) {
 
-		$sentence = strtolower($this->removePunctuation($sentence));
+                default:
+                    if (isset($this->$key )) {
+                        $this->$key = $value;
+                    }
+                    break;
+            }
+        }
+    }
 
-		$retval = '';
-		$fragments = explode(' ', $sentence);
+    public function scramble($sentence)
+    {
 
-		foreach ($fragments as $fragment) {
+        $sentence = strtolower($this->removePunctuation($sentence));
 
-			$screwUp = mt_rand(0, 100) < 15;
-			$screwedUpFragment = $fragment;
-			if ($screwUp) {
-				$screwedUpFragment = $this->screwUpFragment($fragment);
-			}
-			$retval .= ' ' . $screwedUpFragment;
-		}
 
-		return $this->hitSpacebarOnCaffeine() . $retval;
-	}
+        for ($i = 0; $i < $this->passes; $i++) {
 
-	protected function removePunctuation($sentence) {
+            $retval = '';
+            $fragments = explode(' ', $sentence);
+            foreach ($fragments as $fragment) {
 
-		$retval = preg_replace("/[^A-Za-z0-9 ]/", '', $sentence);
-		return $retval;
-	}
+                $screwUp = mt_rand(0, 100) < $this->probability;
+                $ballsedUpFragment = $fragment;
+                if ($screwUp) {
+                    $ballsedUpFragment = $this->getRandomBallsup()->ballsup($fragment);
+                    $this->scrambled = true;
+                }
+                $retval .= ' ' . $ballsedUpFragment;
+            }
+            $sentence = $retval;
+        }
 
-	public function hitSpacebarOnCaffeine() {
+        if (!$this->scrambled) {
+            $retval = $this->scramble($retval);
+        } else {
+            $retval = $this->hitSpacebarOnCaffeine() . $retval;
+        }
 
-		$retval = ' ';
-		if (mt_rand(0, 100) < 30) {
-			$retval = str_pad('', mt_rand(1,8), ' ', STR_PAD_LEFT);
-		}
+        return $retval;
+    }
 
-		return $retval;
-	}
+    protected function removePunctuation($sentence)
+    {
 
-	public function screwUpFragment($fragment) {
+        $retval = preg_replace("/[^A-Za-z0-9 ]/", '', $sentence);
+        return $retval;
+    }
 
-		$effect = mt_rand(1,3);
-		$len = strlen($fragment);
-		$retval = null;
+    public function hitSpacebarOnCaffeine()
+    {
 
-		switch ($effect) {
+        $retval = ' ';
+        if (mt_rand(0, 100) < 30) {
+            $retval = str_pad('', mt_rand(1, 8), ' ', STR_PAD_LEFT);
+        }
 
-			case 1:
-				// swap 1st/2nd chars
-				if ($len > 1) {
-					$retval = $fragment[1] . $fragment[0] . substr($fragment, 2, $len - 2);
-				}
-				break;
+        return $retval;
+    }
 
-			case 2:
-				// make seemingly genuine keyboard mistakes
-				$mistakes = mt_rand(0, 2);
-				$chars = str_split($fragment);
-				for ($i = 0; $i < $mistakes; $i++) {
-					$pos = mt_rand(0, $len - 1);
-					$likelyMistakes = $this->getKeyboard()->getNeighbouringKeys($chars[$pos]);
-					$mistake = $likelyMistakes[mt_rand(0, count($likelyMistakes) - 1)];
-					$chars[$pos] = $mistake;
-				}
-				$retval = implode($chars);
-				break;
+    public function addBallsup(Ballsup $ballsup)
+    {
 
-			case 3:
-				// repeat first or last character
-				$padType = mt_rand(0, 1) ? STR_PAD_LEFT : STR_PAD_RIGHT;
-				$padLength = mt_rand(1, 4);
-				$retval = str_pad($fragment, $padLength, $fragment[$padType ? 0 : ($len - 1)], $padType);
-				break;
+        $this->ballsups[] = $ballsup;
+        return $this;
+    }
 
-			default:
-				break;
-		}
+    public function getBallsups()
+    {
+        return $this->ballsups;
+    }
 
-		return $retval;
-	}
+    /**
+     * @return Sentence\Ballsup
+     */
+    public function getRandomBallsup()
+    {
+
+        return $this->ballsups[rand(0, count($this->ballsups) - 1)];
+    }
 }
