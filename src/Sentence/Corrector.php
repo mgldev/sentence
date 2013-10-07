@@ -25,7 +25,7 @@ class Corrector {
 			$retval = $this->correctedSentance = str_replace(array('Did you mean: ', 'Showing results for ', "\n"), '', strip_tags($dom->saveHTML()));
         }
 
-        return $retval;
+        return trim($retval);
     }
 
 	public function getOriginalSentance() {

@@ -1,7 +1,7 @@
 <?php
 
+namespace Sentence\Ballsup;
 use Sentence\Ballsup;
-
 /**
  * Switch the first and last letter
  */
